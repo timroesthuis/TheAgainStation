@@ -10,7 +10,7 @@ public class Controller {
         model = new Model();
     }
 
-    ///// Initialisation of all FXML stuff /////////////////////////////////////////////////////////////////////////////
+    ///// Initialization of all FXML stuff /////////////////////////////////////////////////////////////////////////////
 
     /* Temperature */
     @FXML
@@ -66,36 +66,6 @@ public class Controller {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    ///// Setters //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    /* Temperature */
-    public void setTemperature(int tmp) {
-        temperature.setText(tmp + " °C");
-
-        if(tmp > 22) {}
-        else if( tmp > 12) {}
-        else if(tmp > 0) {}
-        else {}
-
-    }
-
-    /* Humidity */
-    public void setHumidity(int hum) {
-        humidity.setText(hum + " %");
-    }
-
-    /* Air Pressure */
-    public void setAirpressure(int air) {
-        airPressure.setText(air + " hPa");
-    }
-
-    /* Brightness */
-    public void setBrightness(int brt) {
-        brightness.setText(brt + " Lux");
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     ///// Icon setters /////////////////////////////////////////////////////////////////////////////////////////////////
 
     /* Temperature */
@@ -120,7 +90,7 @@ public class Controller {
         tmp_base.setFill(Color.RED);
     }
 
-    private void freezingTemerature() {
+    private void freezingTemperature() {
         tmp_hot.setVisible(false);
         tmp_med.setVisible(false);
         tmp_cold.setVisible(false);
@@ -176,14 +146,87 @@ public class Controller {
 
     /* Brightness */
     private void day() {
-
+        brt_background.setVisible(false);
+        brt_moon.setVisible(false);
+        brt_cloudp1.setVisible(false);
+        brt_cloudp2.setVisible(false);
+        brt_cloudp3.setVisible(false);
     }
 
     private void cloudy() {
-
+        brt_background.setVisible(false);
+        brt_moon.setVisible(false);
+        brt_cloudp1.setVisible(true);
+        brt_cloudp2.setVisible(true);
+        brt_cloudp3.setVisible(true);
     }
 
     private void night() {
-
+        brt_background.setVisible(true);
+        brt_moon.setVisible(true);
+        brt_cloudp1.setVisible(false);
+        brt_cloudp2.setVisible(false);
+        brt_cloudp3.setVisible(false);
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ///// Updaters /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /* Update all */
+    public void updateAll() {
+        updateTemperature();
+        updateHumidity();
+        updateAirpressure();
+        updateBrightness();
+    }
+
+    /* Temperature */
+    private void updateTemperature() {
+        int tmp = model.getTemperature();
+
+        temperature.setText(tmp + " °C");
+
+        if(tmp > 22) {hotTemperature();}
+        else if(tmp > 12) {medTemperature();}
+        else if(tmp > 0) {coldTemperature();}
+        else {freezingTemperature();}
+    }
+
+    /* Humidity */
+    private void updateHumidity() {
+        int hum = model.getHumidity();
+
+        humidity.setText(hum + " %");
+
+        if(hum > 67) {reallyHumid();}
+        else if(hum > 33) {humid();}
+        else {notHumid();}
+    }
+
+    /* Air Pressure */
+    private void updateAirpressure() {
+        int air = model.getAirPressure();
+
+        airPressure.setText(air + " hPa");
+
+        if(air > 800) {highPressure();}
+        else if(air > 550) {mediumPressure();}
+        else {lowPressure();}
+    }
+
+    /* Brightness */
+    private void updateBrightness() {
+        int brt = model.getBrightness();
+
+        brightness.setText(brt + " Lux");
+
+        if(brt > 720) {day();}
+        else if(brt > 360) {cloudy();}
+        else {night();}
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
