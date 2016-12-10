@@ -4,14 +4,10 @@ import javafx.scene.*;
 import javafx.stage.*;
 
 public class Main extends Application {
-//    public Main() {
-//        model = new Model();
-//    }
 
     public static void main(String[] args) {
         launch(args);
 
-<<<<<<< HEAD
         Controller controller = new Controller();
 
         System.out.println("stage\n");
@@ -20,11 +16,6 @@ public class Main extends Application {
         controller.updateAll();
 
         System.out.println("update\n");
-=======
-        Model model = new Model();
-
-        model.setTemperature(7);
->>>>>>> ef797a600b2d248c4a12b08a9bb0d481a3063d85
     }
 
     public void start(Stage myStage) throws Exception {

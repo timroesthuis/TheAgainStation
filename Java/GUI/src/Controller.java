@@ -6,13 +6,6 @@ import javafx.scene.text.Text;
 public class Controller {
     public Model model = new Model();
 
-<<<<<<< HEAD
-=======
-    public Controller() {
-        model = new Model();
-    }
-
->>>>>>> ef797a600b2d248c4a12b08a9bb0d481a3063d85
     ///// Initialization of all FXML stuff /////////////////////////////////////////////////////////////////////////////
 
     /* Temperature */
@@ -171,19 +164,11 @@ public class Controller {
         brt_cloudp2.setVisible(false);
         brt_cloudp3.setVisible(false);
     }
-<<<<<<< HEAD
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     ///// Updaters /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-=======
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    ///// Updaters /////////////////////////////////////////////////////////////////////////////////////////////////////
-
->>>>>>> ef797a600b2d248c4a12b08a9bb0d481a3063d85
     /* Update all */
     public void updateAll() {
         updateTemperature();
@@ -195,14 +180,9 @@ public class Controller {
     /* Temperature */
     private void updateTemperature() {
         int tmp = model.getTemperature();
-<<<<<<< HEAD
         String tmp2 = Integer.toString(tmp);
 
         temperature.setText(tmp2 + " °C");
-=======
-
-        temperature.setText(tmp + " °C");
->>>>>>> ef797a600b2d248c4a12b08a9bb0d481a3063d85
 
         if(tmp > 22) {hotTemperature();}
         else if(tmp > 12) {medTemperature();}
